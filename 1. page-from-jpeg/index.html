@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        #background {
+            max-width: 984px;
+            margin: auto;
+            overflow: hidden;
+            background-image: url(assets/background-image.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+        }
+
+        .container {
+            max-width: 984px;
+            background: white;
+            margin-top: -100px;
+        }
+
+        #bottom {
+            max-width: 984px;
+            background: #f8f8f8;
+            margin: 50px auto auto auto;
+            padding-top: 50px;
+        }
+
+        body {
+            font-family: Arial;
+            font-size: 10px;
+            color: #757575;
+        }
+
+        h1 {
+            font-size: 21px;
+            color: #383838;
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-size: 15px;
+            color: #383838;
+            margin-top: 18px;
+            margin-bottom: 18px;
+        }
+
+        #logo-img {
+            height: 72px;
+        }
+
+        #logo {
+            margin-top: -35px;
+        }
+
+        #gosling {
+            height: 48px;
+            float: left;
+            margin-bottom: 10px;
+        }
+
+        .goslingLable {
+            margin: 4px;
+        }
+
+        .follow {
+            height: 24px;
+            width: 24px;
+        }
+
+        .followLable {
+            vertical-align: middle;
+        }
+
+        #internet {
+            background-color: #5A4D99;
+            float: left;
+            margin-right: 5px;
+        }
+
+        #culture {
+            background-color: #BFCC36;
+            float: left;
+            margin-right: 5px;
+        }
+
+        #handshake {
+            background-color: #1A587A;
+            float: left;
+            margin-right: 5px;
+        }
+
+        .icon-img {
+            height: 18px;
+            margin: 3px;
+        }
+
+        .icon {
+            float: left;
+            background: #f9f9f9;
+            margin: 5px;
+        }
+
+        .iconLabel {
+            float: left;
+            margin-top: 3px;
+            margin-right: 10px;
+        }
+
+        input {
+            border: 0px;
+        }
+
+        .search {
+            background: white;
+        }
+
+        #searchDiv {
+            border: 1px solid #bbbbbb;
+            margin-top: 30px;
+        }
+
+        #searchBlock {
+            padding: 10px;
+        }
+
+        .item-logo {
+            height: 80px;
+            margin: 15px 15px 10px 0px;
+        }
+
+        .itemBottom {
+            float: inline-end;
+        }
+
+        .item-blue-link {
+            width: 50px;
+            color: #009DF2;
+            border: 1px solid #009DF2;
+            font-weight: bold;
+            padding-left: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            #searchDiv {
+                margin: 0 25px 15px 25px;
+                background: white;
+            }
+
+            #bottom {
+                padding-top: 0px;
+            }
+
+            #searchBlock {
+                background: white;
+                padding: 0px;
+            }
+
+            #search-hr {
+                background: white;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .item-logo {
+                margin: 15px 0px 10px 0px;
+            }
+
+            .item {
+                margin: 8px;
+            }
+
+            .itemBottom {
+                margin-top: 0px;
+            }
+
+            .item-blue-link {
+                margin-top: 8px;
+            }
+        }
+
+        .itemDiv {
+            background: white;
+            margin: 5px;
+        }
+
+        @media screen and (min-width: 600px) {
+            .item {
+                padding: 5px;
+            }
+        }
+
+        .item-orange-link {
+            background: #FFA500;
+            color: white;
+            border: 1px solid #FFA500;
+            font-weight: bold;
+            padding-left: 6px;
+            text-align: center;
+            float: inline-start;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        img {
+            margin-right: 10px;
+        }
+
+        .itemText {
+            padding-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <div id="background"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 offset-md-2" id="logo"><img src="assets/logo.jpg" class="rounded-circle"
+                                                              id="logo-img"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 offset-md-2"><h1>Lorem ipsum</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 offset-md-2">
+                <div class="row">
+                    <div class="col-sm-12"><h2>About</h2></div>
+                    <div class="col-sm-12">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vatae egestas dolor. Mauris finibus
+                        risus feuiat aliquam dapibus. Praesent sit amet justo porta, faucibus mi in, sollicitudin
+                        turpis.
+                        Mauris eget pretium turpis, id luctus est. Integer tincidunt tellus ut volutpat tincidunt. Ut
+                        purus nisl, lacinia vitae sollicitudin vitae, vehicula nec dolor. Phasellus efficitur aliquam
+                        porta.
+                        Pellentesque laoreet, elit vestibulum facilisis finibus, tortor nisi hendrerit erat, non gravida
+                        arcu dui et velit. In sit amet nisi tincidunt, venenatis orci ac, suscipit leo. In urna est,
+                        gravida varius ultrices at consequat ac urna.
+                        Ut pharetra, lorem ut egestas congue, ante arcu consequat eros, el tristique ex elit eu tortor.
+                        Morbi vestibulum diam nunc, euismod tempor arcu pharetra sit amet. Sed porttitor, orci eget
+                        ultricies interdum, orci diam facilisis nisl, a finibus ante nisl at elit.
+                        Curabitur eget lacus fermentum urna bibendum faucibus quis eget dui. Maecenas sed molestie
+                        tellus. Integer facilisis dictum lectus quis lacinia.
+                    </div>
+                    <div class="col-sm-12"><h2>Area of focus</h2></div>
+                    <div class="col-sm-12">
+                        <div class="icon">
+                            <div class="follow" id="internet"><img src="assets/internet.svg" class="icon-img"></div>
+                            <div class="iconLabel">Economy,
+                                Politics & Environment
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <div class="follow" id="culture"><img src="assets/culture.svg" class="icon-img"></div>
+                            <div class="iconLabel">Health & Culture</div>
+                        </div>
+                        <div class="icon">
+                            <div class="follow" id="handshake"><img src="assets/handshake.svg" class="icon-img"></div>
+                            <div class="iconLabel">Public
+                                Administration & Non-Profit
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2>Contact</h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <img src="assets/gosling.jpg" id="gosling" class="rounded-circle">
+                        <div class="goslingLable">Ivan Ivanov</div>
+                        <div class="goslingLable"><a href="mailto:ivan@mail.ru">ivan@mail.ru</a></div>
+                    </div>
+                    <div class="col-sm-12">
+                        <h2>Follow us</h2>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="followLable"><img src="assets/web.svg" class="follow"><a
+                                href="lorem.com">lorem.com</a></div>
+                        <div class="followLable"><img src="assets/in.svg" class="follow"><a href="linkedin.com/lorem">linkedin.com/lorem</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom">
+        <div class="row">
+            <div class="col-sm-8 offset-md-2">
+                <div class="row">
+                    <div class="col-sm-6 d-block d-md-none" id="search-hr"><hr></div>
+                    <div class="col-sm-7 d-none d-md-block" ><h1>Lorem of Lorem ipsum</h1></div>
+                    <div class="col-sm-5" id="searchBlock">
+                        <div class="search rounded" id="searchDiv"><img src="assets/search.svg" class="search icon-img"><input
+                                type="text" placeholder="Search"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 item">
+                        <div class="row itemDiv">
+                            <div class="col-4 col-sm-5"><img src="assets/item-logo.png" class="item-logo"></div>
+                            <div class="col-8 col-sm-7"><h2>Lorem upsum Dolor</h2></div>
+                            <div class="col-sm-12 d-none d-md-block itemText">Lorem ipsum sit amet, consectetur adipiscing elit. In vitae egestas
+                                dolor
+                            </div>
+                            <div class="col-4 col-sm-12">
+                                <div class="item-blue-link rounded">Public</div>
+                            </div>
+                            <div class="col-sm-12 d-none d-md-block itemText">&nbsp;</div>
+                            <div class="col-sm-12 d-none d-md-block itemText">&nbsp;</div>
+                            <div class="col-8 col-sm-12">
+                                <div><h1 class="itemBottom">Lorem</h1></div>
+                                <div class="d-none d-md-block itemBottom">No fees and no restrictions</div>
+                                <div class="item-orange-link rounded d-none d-md-block">View Details...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 item">
+                        <div class="row itemDiv">
+                            <div class="col-4 col-sm-5"><img src="assets/item-logo.png" class="item-logo"></div>
+                            <div class="col-8 col-sm-7"><h2>Lorem upsum Dolor</h2></div>
+                            <div class="col-sm-12 itemText" >Lorem by <b>Lorem upsum</b> Dolor</div>
+                            <div class="col-sm-12 d-none d-md-block itemText">Lorem ipsum sit amet, consectetur adipiscing elit. In vitae egestas
+                                dolor
+                            </div>
+                            <div class="col-sm-12 d-none d-md-block itemText"><b>Format:</b> csv</div>
+                            <div class="col-4 col-sm-12">
+                                <div class="item-blue-link rounded">Public</div>
+                            </div>
+                            <div class="col-8 col-sm-12">
+                                <div><h1 class="itemBottom">Lorem</h1></div>
+                                <div class="d-none d-md-block itemBottom">No fees and no restrictions</div>
+                                <div class="item-orange-link rounded d-none d-md-block">View Details...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 item">
+                        <div class="row itemDiv">
+                            <div class="col-4 col-sm-5"><img src="assets/item-logo.png" class="item-logo"></div>
+                            <div class="col-8 col-sm-7"><h2>Lorem upsum Dolor</h2></div>
+                            <div class="col-sm-12 itemText">Lorem by <b>Lorem upsum</b> Dolor</div>
+                            <div class="col-sm-12 d-none d-md-block itemText">Lorem ipsum sit amet, consectetur adipiscing elit. In vitae egestas
+                                dolor
+                            </div>
+                            <div class="col-sm-12 d-none d-md-block itemText"><b>Format:</b> csv</div>
+                            <div class="col-4 col-sm-12">
+                                <div class="item-blue-link rounded">Open</div>
+                            </div>
+                            <div class="col-8 col-sm-12">
+                                <div><h1 class="itemBottom">Lorem</h1></div>
+                                <div class="d-none d-md-block itemBottom">No fees and no restrictions</div>
+                                <div class="item-orange-link rounded d-none d-md-block">View Details...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
