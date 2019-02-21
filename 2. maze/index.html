@@ -456,21 +456,21 @@
 
     function escapePlan() {
         const piece = createPiece();
-        for (let i = 0; i < 40; i++) {
-            while (piece.isThereWay()) {
-                piece.goForward()
-            }
-            while (!piece.isThereWay()) {
-                piece.turnLeft();
-                if (!piece.isThereWay()) {
-                    piece.turnRight();
-                    piece.turnRight();
-                    if (!piece.isThereWay()) {
-                        piece.turnRight()
-                    }
-                }
-            }
-        }
+        // for (let i = 0; i < 40; i++) {
+        //     while (piece.isThereWay()) {
+        //         piece.goForward()
+        //     }
+        //     while (!piece.isThereWay()) {
+        //         piece.turnLeft();
+        //         if (!piece.isThereWay()) {
+        //             piece.turnRight();
+        //             piece.turnRight();
+        //             if (!piece.isThereWay()) {
+        //                 piece.turnRight()
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     function main() {
