@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graph creation</title>
+</head>
+<body>
+<script>
+
+    class EdgeWeight {
+        constructor(weight, direction) {
+            this.weight = weight;
+            this.direction = direction;
+        }
+    }
+
+    class Edge {
+        constructor(vertex1, vertex2) {
+            this.vertex1 = vertex1;
+            this.vertex2 = vertex2;
+        }
+
+    }
+
+    class Graph {
+        constructor() {
+            this.vertices = [];
+            this.edges = {};
+            this.edgeWeights = {};
+        }
+    }
+
+    Graph.prototype.selectVertex = function (id) {
+        return this.vertices.indexOf(id);
+    };
+
+    Graph.prototype.selectEdge = function (vertex1, vertex2) {
+        return this.checkEdge(vertex1, vertex2);
+    };
+
+    Graph.prototype.selectAllNeighboursByVertex = function (id, vertices) {
+        let result = [];
+        Object.values(this.edges).forEach(function (e, index) {
+            if (e !== undefined) {
+                if (e.vertex1 === id) {
+                    result.push(vertices ? e.vertex2 : index);
+                } else if (e.vertex2 === id) {
+                    result.push(vertices ? e.vertex1 : index);
+                }
+            }
+        });
+        return result;
+    };
+
+    Graph.prototype.addVertex = function () {
+        this.vertices.push(this.vertices.length > 0 ? this.vertices[this.vertices.length - 1] + 1 : 1);
+    };
+
+    Graph.prototype.addEdge = function (vertex1, vertex2, weight, value) {
+        if (vertex1 !== vertex2 && this.vertices.includes(vertex1) && this.vertices.includes(vertex2) && weight) {
+            if (this.checkEdge(vertex1, vertex2) > -1) {
+                return false;
+            } else {
+                let id = Object.keys(this.edges).length;
+                this.edges[id] = vertex1 > vertex2 ? new Edge(vertex2, vertex1) : new Edge(vertex1, vertex2);
+                if (value === -1 || value === 1 || value === 0) {
+                    this.edgeWeights[id] = vertex1 > vertex2 ? new EdgeWeight(weight, value * -1) : new EdgeWeight(weight, value);
+                }
+            }
+        } else {
+            return false;
+        }
+    };
+
+    Graph.prototype.deleteVertex = function (id) {
+        let index = this.vertices.indexOf(id);
+        if (index > -1) {
+            let self = this;
+            this.selectAllNeighboursByVertex(id, false).forEach(function (e) {
+                self.deleteEdge(e)
+            });
+            this.vertices.splice(index, 1);
+        } else {
+            return false;
+        }
+    };
+
+    Graph.prototype.deleteEdge = function (id) {
+        this.edges[id] = undefined;
+        this.edgeWeights[id] = undefined;
+    };
+
+    Graph.prototype.rotateGraph = function (vertex1, vertex2) {
+        let edge = this.selectEdge(vertex1, vertex2);
+        if (edge > -1) {
+            this.edgeWeights[edge].direction *= -1;
+        } else {
+            return false;
+        }
+    };
+
+    Graph.prototype.getMatrix = function () {
+        let matrix = [];
+        for (let i = 1; i <= this.vertices.length; i++) {
+            let m = [];
+            for (let j = 1; j <= this.vertices.length; j++) {
+                m.push(this.selectAllNeighboursByVertex(i, true).includes(j) ? 1 : 0);
+            }
+            matrix.push(m);
+        }
+        return matrix;
+    };
+
+    Graph.prototype.getWeight = function (vertex1, vertex2) {
+        let edge = this.selectEdge(vertex1, vertex2);
+        if (edge > -1) {
+            return this.edgeWeights[edge].weight;
+        } else {
+            return false;
+        }
+    };
+
+    Graph.prototype.checkEdge = function (vertex1, vertex2) {
+        let result = -1;
+        let v1 = vertex1 > vertex2 ? vertex2 : vertex1;
+        let v2 = vertex1 > vertex2 ? vertex1 : vertex2;
+        Object.values(this.edges).forEach(function (e, index) {
+            if (e !== undefined) {
+                if (e.vertex1 === v1 && e.vertex2 === v2) {
+                    result = index;
+                }
+            }
+        });
+        return result;
+    };
+
+    Graph.prototype.getSubgraph = function (a) {
+        let result = [];
+        let self = this;
+        a.forEach(function (e) {
+            let edges = [];
+            self.selectAllNeighboursByVertex(e, false).forEach(function (e1) {
+                if ((e !== self.edges[e1].vertex1 && a.includes(self.edges[e1].vertex1)) || (e !== self.edges[e1].vertex2 && a.includes(self.edges[e1].vertex2))) {
+                    edges.push(self.edges[e1]);
+                }
+            });
+            result.push({key: e, value: edges});
+        });
+        return result;
+    };
+
+    let graph = new Graph();
+
+
+    function addTestData(g) {
+        g.addVertex();
+        g.addVertex();
+        g.addVertex();
+        g.addVertex();
+
+        g.addEdge(1, 2, 5, 0);
+        g.addEdge(1, 3, 1, 0);
+        g.addEdge(2, 3, 1, -1);
+        g.addEdge(2, 4, 2, 0);
+        g.addEdge(4, 3, 4, 0);
+        g.addEdge(1, 4, 12, 0);
+    }
+
+</script>
+</body>
+</html>
