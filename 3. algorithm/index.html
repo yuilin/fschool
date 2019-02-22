@@ -213,45 +213,56 @@
         return result;
     };
 
-    // todo: fix this function :)
-    Graph.prototype.findRoot = function (vertex1, vertex2) {
-        let root = [];
+    /**
+     * Finds the shortest route between two vertices.
+     *
+     * @param vertex1 the name of vertex1
+     * @param vertex2 the name of vertex2
+     * @returns {int} the shortest way
+     */
+    Graph.prototype.findRoute = function (vertex1, vertex2) {
+        let route = [];
         let verticesToVisit = this.vertices.slice(0);
         this.vertices.forEach(function (e) {
             if (e === vertex1) {
-                root.push({key: e, value: 0});
+                route.push({key: e, value: 0});
             } else {
-                root.push({key: e, value: -1});
+                route.push({key: e, value: -1});
             }
         });
         while (verticesToVisit.length > 0) {
-            let nextVertex = this.getNextVertex(root, verticesToVisit);
+            let nextVertex = this.getNextVertex(route, verticesToVisit);
             let edges_array = this.selectAllNeighboursByVertex(nextVertex, false);
             let self = this;
             edges_array.forEach(function (e) {
                 let edge = self.edges[e];
                 let edgeWidth = self.edgeWeights[e];
                 if (edge.vertex1 === nextVertex && edgeWidth.direction > -1) {
-                    if (root[self.getIndexInArray(root, edge.vertex2)].value === -1 || root[self.getIndexInArray(root, edge.vertex2)].value > root[self.getIndexInArray(root, nextVertex)].value + edgeWidth.weight) {
-                        root[self.getIndexInArray(root, edge.vertex2)].value = root[self.getIndexInArray(root, nextVertex)].value === -1 ? edgeWidth.weight : root[self.getIndexInArray(root, nextVertex)].value + edgeWidth.weight;
+                    if (route[self.getIndexInArray(route, edge.vertex2)].value === -1 || route[self.getIndexInArray(route, edge.vertex2)].value > route[self.getIndexInArray(route, nextVertex)].value + edgeWidth.weight) {
+                        route[self.getIndexInArray(route, edge.vertex2)].value = route[self.getIndexInArray(route, nextVertex)].value === -1 ? edgeWidth.weight : route[self.getIndexInArray(route, nextVertex)].value + edgeWidth.weight;
                     }
                 } else if (edge.vertex2 === nextVertex && edgeWidth.direction < 1) {
-                    if (root[self.getIndexInArray(root, edge.vertex1)] === -1 || root[self.getIndexInArray(root, edge.vertex1)] > root[self.getIndexInArray(root, nextVertex)].value + edgeWidth.weight) {
-                        root[self.getIndexInArray(root, edge.vertex1)].value = root[self.getIndexInArray(root, nextVertex)].value === -1 ? edgeWidth.weight : root[self.getIndexInArray(root, nextVertex)].value + edgeWidth.weight;
-                        console.log(root[nextVertex].value === -1 ? edgeWidth.weight : root[nextVertex].value + edgeWidth.weight);
+                    if (route[self.getIndexInArray(route, edge.vertex1)].value === -1 || route[self.getIndexInArray(route, edge.vertex1)].value > route[self.getIndexInArray(route, nextVertex)].value + edgeWidth.weight) {
+                        route[self.getIndexInArray(route, edge.vertex1)].value = route[self.getIndexInArray(route, nextVertex)].value === -1 ? edgeWidth.weight : route[self.getIndexInArray(route, nextVertex)].value + edgeWidth.weight;
                     }
                 }
             });
             verticesToVisit.splice(verticesToVisit.indexOf(nextVertex), 1);
         }
-        console.log(root);
-        return root[this.getIndexInArray(root, vertex2)].value;
+        return route[this.getIndexInArray(route, vertex2)].value;
     };
 
-    Graph.prototype.getNextVertex = function (root, verticesToVisit) {
+    /**
+     * Finds the next vertex.
+     *
+     * @param route the array with routes
+     * @param verticesToVisit the vertices that are still not checked
+     * @returns (int) the next vertex to check
+     */
+    Graph.prototype.getNextVertex = function (route, verticesToVisit) {
         let vertex = -1;
         let vertexKey = -1;
-        Object.values(root).forEach(function (e) {
+        Object.values(route).forEach(function (e) {
             if (verticesToVisit.includes(e.key) && e.value > -1 && (vertex > e.value || vertex === -1)) {
                 vertex = e.value;
                 vertexKey = e.key;
@@ -260,10 +271,16 @@
         return vertexKey;
     };
 
-    Graph.prototype.getIndexInArray = function (root, key) {
+    /**
+     * Returns the index of selected route in array.
+     *
+     * @param route the array with routes
+     * @param key the key to be found
+     * @returns (int) the index of the selected route in array
+     */
+    Graph.prototype.getIndexInArray = function (route, key) {
         let result = -1;
-        Object.values(root).forEach(function (e, index) {
-
+        Object.values(route).forEach(function (e, index) {
             if (e.key === key) {
                 result = index;
             }
